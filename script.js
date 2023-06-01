@@ -26,9 +26,9 @@ let playing = true;
 function switchPlayer() {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
+  player0El.classList.toggle('player--active'); // Updated
+  player1El.classList.toggle('player--active'); // Updated
   activePlayer = activePlayer === 0 ? 1 : 0;
-  player0El.classList.toggle('player--active');
-  player1El.classList.toggle('player--active');
 }
 
 function toggleButtons(command) {
