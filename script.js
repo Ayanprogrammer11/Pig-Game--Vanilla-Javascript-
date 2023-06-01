@@ -76,7 +76,7 @@ btnHold.addEventListener('click', function () {
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
     // 2. if score >= 100 then the current player wins otherwise it switches the player
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 100) {
       playing = false;
       // Manipulating Elements when the player wins
       document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
