@@ -29,7 +29,7 @@ main {
   height: 60rem;
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
-  filter: blur();
+  /* filter: blur(); */
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   overflow: hidden;
@@ -88,6 +88,7 @@ main {
   transition: all 0.75s;
 }
 
+/* CURRENT */
 .current-label {
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -121,6 +122,9 @@ main {
   padding: 0.7rem 2.5rem;
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  /* position: relative; */
+  overflow: hidden;
+  z-index: 1;
 }
 
 .btn::first-letter {
@@ -140,7 +144,7 @@ main {
 }
 
 .btn:active {
-  transform: translate(-50%, 3px);
+  transform: translateY(-50%, 3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
@@ -164,4 +168,17 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Disabled Button */
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.7;
+  background-color: #888;
+  color: #555;
+  box-shadow: none;
 }
