@@ -17,7 +17,7 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
-const scores = [0, 0];
+let scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -31,11 +31,19 @@ function switchPlayer() {
   player1El.classList.toggle('player--active');
 }
 
-function disableButtons() {
-  const buttons = document.getElementsByTagName('button');
-  for (let i = 0; i < buttons.length; i++) {
-    if (buttons[i].classList.contains('btn--new')) continue;
-    buttons[i].setAttribute('disabled', 'true');
+function toggleButtons(command) {
+  if (command === 'disable') {
+    const buttons = document.getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+      if (buttons[i].classList.contains('btn--new')) continue;
+      buttons[i].setAttribute('disabled', 'true');
+    }
+  } else if (command === 'enable') {
+    const buttons = document.getElementsByTagName('button');
+    for (let i = 0; i < buttons.length; i++) {
+      if (buttons[i].classList.contains('btn--new')) continue;
+      buttons[i].removeAttribute('disabled');
+    }
   }
 }
 
@@ -68,16 +76,31 @@ btnHold.addEventListener('click', function () {
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
     // 2. if score >= 100 then the current player wins otherwise it switches the player
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
       playing = false;
       // Manipulating Elements when the player wins
       document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
       diceEl.classList.add('hidden');
       document.getElementById(`current--${activePlayer}`).textContent = 0;
-      disableButtons();
+      toggleButtons('disable');
     } else {
       // Switching the player
       switchPlayer();
     }
   }
+});
+
+btnNew.addEventListener('click', function () {
+  playing = true;
+  toggleButtons('enable');
+  diceEl.classList.add('hidden');
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  currentScore = 0;
+  activePlayer = 0;
+  scores = [0, 0];
 });
