@@ -52,7 +52,7 @@ function toggleButtons(command) {
 btnRoll.addEventListener('click', function () {
   if (playing) {
     // 1. Generate a Random Dice roll
-    let dice = 1;
+    let dice = Math.trunc(Math.random() * 6) + 1;
 
     // 2. Display Dice
     diceEl.classList.remove('hidden');
