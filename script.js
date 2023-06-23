@@ -29,6 +29,7 @@ function initializeGame() {
 
   [player0El, player1El].forEach(player => player.classList.remove('player--winner', 'player--active'));
   player0El.classList.add('player--active');
+  toggleButtons();
 }
 
 function switchPlayer() {
