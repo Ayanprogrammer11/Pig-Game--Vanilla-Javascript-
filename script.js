@@ -24,6 +24,7 @@ let playing = true;
 
 // Reusable Functions
 function switchPlayer() {
+  playing = true;
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
   player0El.classList.toggle('player--active'); // Updated
